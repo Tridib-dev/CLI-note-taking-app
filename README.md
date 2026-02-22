@@ -200,6 +200,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 <div align="center">
 
+Author : Tridib Dey
 Made with ❤️ and Python · NoterLog
 
 </div>
