@@ -15,7 +15,7 @@ FILE_NAME = os.path.join(BASE_DIR,"Notes.json")
 
 if not os.path.exists(FILE_NAME):
     with open(FILE_NAME,"w") as file:
-        json.dump({},file)
+        json.dump([],file)
 
 # ============================================================================================================ 
 
@@ -43,15 +43,15 @@ class Note:
         try:
             with open(FILE_NAME,"r") as file:
                 DATA = json.load(file)
+                if not isinstance(DATA, list): DATA = []
+        # handling the case when the file is not found or is empty
         except(FileNotFoundError,json.JSONDecodeError):
-            DATA = {}
+            DATA = []
             
         # --------------------------------------------------
           
         # getting the new id for the note and saving it in the file
-        id = str(max(map(int, DATA.keys()), default=0) + 1)
-        DATA[id] = data
-        
+        DATA.append(data)        
         # --------------------------------------------------
         
         # sorting the notes based on priority before saving
@@ -80,18 +80,18 @@ def priority_decider(n: int) -> str:
     
     # mapping the input number to the corresponding priority level
     
-    mapping = {1: "High", 2: "Medium", 3: "Low"}
+    mapping = {1: "High", 2: "Medium", 3: "Low",0: "Unneccessary"}
     return mapping[n]
       
 
 # ============================================================================================================      
 
 #Global priority order for sorting the notes
-PRIORITY_ORDER = {"High": 3, "Medium": 2, "Low": 1}
+PRIORITY_ORDER = {"High": 3, "Medium": 2, "Low": 1,"Unneccessary": 0}
 
 # ============================================================================================================
 
-def sort_notes(data: dict) -> dict:
+def sort_notes(data: list) -> list:
     
     ''' 
     sorting the nots based on their priority level
@@ -99,10 +99,11 @@ def sort_notes(data: dict) -> dict:
     '''
     
     sorted_items = sorted(
-        data.items(),
-        key=lambda item: PRIORITY_ORDER[item[1]["priority"]],
+        data,
+        # sorting the items based on the priority order defined above
+        key=lambda item: PRIORITY_ORDER.get(item["priority"],0),
         reverse=True
     )
-    return {k: v for k, v in sorted_items}
+    return sorted_items
   
   # ============================================================================================================

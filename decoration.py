@@ -20,3 +20,6 @@ def print_Welcome_banner(name):
     print("\n" + title.center(width))
     print(underline.center(width) + "\n")
     
+    
+def terminal_designers():
+    print("\n","="*50,"\n")

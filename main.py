@@ -29,15 +29,15 @@ def main():
         note_time = functions.get_time()
         
         # --------------------------------------------------------------------
-        
+        print("")
         # getting the notes's priority
         try:
-            note_priority = int(input("Note priority (1 => High | 2 => Medium | 3 => Low) : "))
+            note_priority = int(input("Note priority (1 => High | 2 => Medium | 3 => Low | 0 => Unneccesary) : "))
         except ValueError:
             print("Priority must be a number.")
             continue
         
-        if note_priority not in [1,2,3]:
+        if note_priority not in [0,1,2,3]:
             print("\nFallback error because of wrong input,\n\nTry again with appropriate choice !...\n\n")
             continue
     
@@ -56,12 +56,12 @@ def main():
         
         
         # taking decision of deleting or keeping data  on the input of user
-        
+        func.terminal_designers()
         user_input_deletion = input("Enter [y => delete all notes]  or [n => keep all notes] : ")
         if user_input_deletion.lower() == 'y':
             try:
                 with open(functions.FILE_NAME,"w") as file:
-                    json.dump({},file,indent=4)
+                    json.dump([],file,indent=4)
                 print("\nAll notes deleted successfully.\n")
             except Exception as e:
                 print(f"\nAn error occurred while deleting notes: {e}\n")
@@ -75,7 +75,7 @@ def main():
         
         
         # --------------------------------------------------------------------
-        
+        func.terminal_designers()
         # taking decision of finishing note taking on the input of user
         user_input_continue = input("Enter [y => continue]  or [n => stop] : ")
         if user_input_continue.lower() == 'y':
@@ -87,9 +87,9 @@ def main():
             print("\nNote taking stopped because of invalid input\n\n")
             continue
         
-        
+        func.terminal_designers()
         # --------------------------------------------------------------------
-        print("\n")
+        print("\n") 
                 
 
 # Running main function
