@@ -5,6 +5,7 @@ import functions
 import decoration as func
   
 def main():
+    func.print_logo()
     func.print_welcome()
     
     # Getting the name of the user and welcoming on board
@@ -18,9 +19,9 @@ def main():
     while Running:
         
         # Getting the note input from the user
-        note = input("Enter your note : ")
+        note = input(" Enter your note : ")
         if not note.strip():
-            print("Note cannot be empty.")
+            print(" Note cannot be empty.")
             continue
         
         # --------------------------------------------------------------------
@@ -32,13 +33,13 @@ def main():
         print("")
         # getting the notes's priority
         try:
-            note_priority = int(input("Note priority (1 => High | 2 => Medium | 3 => Low | 0 => Unneccesary) : "))
+            note_priority = int(input(" Note priority (1 => High | 2 => Medium | 3 => Low | 0 => Unneccesary) : "))
         except ValueError:
-            print("Priority must be a number.")
+            print(" Priority must be a number.")
             continue
         
         if note_priority not in [0,1,2,3]:
-            print("\nFallback error because of wrong input,\n\nTry again with appropriate choice !...\n\n")
+            print("\n Fallback error because of wrong input,\n\nTry again with appropriate choice !...\n\n")
             continue
     
         # --------------------------------------------------------------------
@@ -57,39 +58,36 @@ def main():
         
         # taking decision of deleting or keeping data  on the input of user
         func.terminal_designers()
-        user_input_deletion = input("Enter [y => delete all notes]  or [n => keep all notes] : ")
+        user_input_deletion = input(" Enter [y => delete all notes]  or [n => keep all notes] : ")
         if user_input_deletion.lower() == 'y':
             try:
                 with open(functions.FILE_NAME,"w") as file:
                     json.dump([],file,indent=4)
-                print("\nAll notes deleted successfully.\n")
+                print("\n All notes deleted successfully.\n")
             except Exception as e:
-                print(f"\nAn error occurred while deleting notes: {e}\n")
+                print(f"\n An error occurred while deleting notes: {e}\n")
         elif user_input_deletion.lower() == 'n':
-            print("\nAll notes kept successfully.\n")
+            print("\n All notes kept successfully.\n")
             
         else:
-            print("\nInvalid input ! \n\n")
-            print("Note taking stopped because of invalid input\n")
+            print("\n Invalid input ! \n\n")
+            print(" Note taking stopped because of invalid input\n")
             continue
         
         
         # --------------------------------------------------------------------
+        print("\n")
         func.terminal_designers()
         # taking decision of finishing note taking on the input of user
-        user_input_continue = input("Enter [y => continue]  or [n => stop] : ")
+        user_input_continue = input(" Enter [y => continue]  or [n => stop] : ")
         if user_input_continue.lower() == 'y':
             continue
         elif user_input_continue.lower() == 'n':
-            print("\nNote taking stopped successfully.\n")
+            print("\n Note taking stopped successfully.\n")
             break
         else:
-            print("\nNote taking stopped because of invalid input\n\n")
+            print("\n Note taking stopped because of invalid input\n\n")
             continue
-        
-        func.terminal_designers()
-        # --------------------------------------------------------------------
-        print("\n") 
                 
 
 # Running main function
