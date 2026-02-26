@@ -38,4 +38,4 @@ def print_logo():
  |_| \_|\____/  |_| |_____|____/ 
     """
     print(green + logo + reset)
-    print(green + "  [ SYSTEM READY ] - NOTES ONLINE" + reset + "\n")
+    print(green + "  [ SYSTEM READY ] - NOTES ONLINE" + reset + "")
