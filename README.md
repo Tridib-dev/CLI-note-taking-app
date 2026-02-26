@@ -80,7 +80,7 @@ Auto-created on first run if it doesn't exist. Acts as the flat-file database fo
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/noter-log.git
+git clone https://github.com/Tridib-dev/noter-log.git
 
 # Navigate into the project directory
 cd noter-log
@@ -201,6 +201,6 @@ This project is open source and available under the [MIT License](LICENSE).
 <div align="center">
 
 Author : Tridib Dey
-Made with ❤️ and Python · NoterLog
+Made with Python · NoterLog
 
 </div>
