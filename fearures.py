@@ -2,8 +2,24 @@ import os
 import datetime
 import functions
 import json
+import decoration as func
 
-
+ 
+def search_all():
+    func.terminaal_designers()
+    inputt = input("do you want to search by keyword or priority ? (k/p) : ").strip().lower()
+    if inputt  not in [ 'k','p']:
+        return "invalid input, please try again !...\n"
+    elif inputt == 'k':
+        word = input("Enter keyword to search : ").strip().lower()
+        return search_keyword(word)
+    else:
+        priority = int(input(" Note priority (1 => High | 2 => Medium | 3 => Low | 0 => Unneccesary) : "))
+        priority = functions.priority_decider(priority)
+        return search_priority(priority=priority)
+    
+        
+ 
  
 def search_keyword(word):
     if not word:
@@ -26,7 +42,7 @@ def search_keyword(word):
 # ============================================================================================================
 
 
-def search_time(priority):
+def search_priority(priority):
     if not priority:
         return f" No Priority provided to find !...\n"
     try:
