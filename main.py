@@ -3,6 +3,8 @@ import os
 import datetime
 import functions
 import decoration as func
+import features
+
   
 def main():
     func.print_logo()
@@ -53,6 +55,23 @@ def main():
         # saving the note in the json file
         NOTE.note_save()
         
+        
+        
+        
+        
+        def search_notes():
+            ''' 
+            function to search the notes based on the keyword or priority level
+
+            '''
+
+            choice = (input(" Do you want to search by keyword ? (y/n) : ")).lower()
+
+            if choice == 'y':
+                return features.search_all()
+            else:
+                print("\n No note will get seacrched!... \n")  
+                continue  
         # --------------------------------------------------------------------
         
         
@@ -88,7 +107,11 @@ def main():
         else:
             print("\n Note taking stopped because of invalid input\n\n")
             continue
-                
+ 
+        # --------------------------------------------------------------------
+
+         
+   
 
 # Running main function
 if __name__ == '__main__':

@@ -3,7 +3,6 @@
 > **A lightweight, terminal-based note-taking app built with Python — organize your thoughts with priority-driven sorting and persistent JSON storage.**
 
 ---
-
 ## 📋 Table of Contents
 
 - [Overview](#-overview)
